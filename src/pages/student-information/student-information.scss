@@ -1,0 +1,41 @@
+page-student-information {
+
+    .scroll-content{
+        padding: 0px !important;
+    }
+    #image{
+        width: 80px;
+        height: 62px;
+        margin: auto;
+        padding-top: 30px;
+    }
+    .child-information{
+        background-color: rgba(228,243,255,1);
+        height: 38px;
+    }
+    .child-input{
+        padding : 50px 24px 0px 24px !important;
+    }
+    .name{
+        margin:0 35px 20px 35px;
+        border-bottom:1px solid #06B9FC;
+    }
+    .gender{
+        font-size: 20px;
+    }
+    .custom-icon {
+        font-size: 24px;
+        color : grey;
+      }
+    .border{
+        border: yellow solid 5px;
+        border-radius: 10px;
+        padding-bottom: 25px;
+        padding-top: 25px;
+    }
+    ion-grid {
+        flex:1;
+        height: 80%;
+        justify-content: flex-end;       
+    }
+}

@@ -1,0 +1,376 @@
+<ion-header>
+    <ion-navbar color="white">
+        <button ion-button menuToggle="page-menu" color="primary">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center;">
+            <img src="./assets/imgs/logo@3x.png" height="34" />
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="openUserMenu()">
+                <img src="../../assets/imgs/me@3x.png" height="18" />
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="landing-container">
+        <!-- <link href="https://vjs.zencdn.net/7.0.3/video-js.css" rel="stylesheet" /> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+        <div class="container-fluid">
+            <div class="row section-hero">
+                <div class="bg-slider">
+                    <div class="bg-slider-item" [ngClass]="{'show': currentBannerBGIndex == 0}" style="background-image: url('/assets/imgs/banner-1.jpg')"></div>
+                    <div class="bg-slider-item" [ngClass]="{'show': currentBannerBGIndex == 1}" style="background-image: url('/assets/imgs/banner-2-web.jpg')"></div>
+                </div>
+                <div class="col-12 content-max-1140">
+                    <div class="feature-teacher-scroller-container desktop-only-flex">
+                        <div class="feature-teacher-container" [ngStyle]="{marginLeft: (-200 * this.featuredTeacherOffset) + 'px'}">
+                            <div *ngFor="let teacher of featuredTeachers; let i = index;" (click)="teacherClicked(teacher)" [ngClass]="{
+                                    'feature-teacher-item': true,
+                                    'show': shouldShowFeatureTeacher(i),
+                                    'transparent': !shouldShowFeatureTeacher(i),
+                                    'active': (featuredTeacherOffset + 1) == i}">
+                                <div class="feature-teacher-pic" [ngStyle]="{'background-image': 'url(' + teacher.avatar_url + ')'}"></div>
+                                <div class="feature-teacher-name">{{teacher.first_name}} {{teacher.last_name}}</div>
+                                <div class="feature-teacher-exp">
+                                    <span class="flag">
+                                        <img src="/assets/imgs/flags/{{teacher.cca2.toUpperCase()}}.png" /></span> {{'landing.exp' | translate}} <span class="text-muted">|</span>
+                                        <span>
+                                            {{teacher.profile.years_of_teaching_min < 10 ? teacher.profile.years_of_teaching_min + ' - ' + teacher.profile.years_of_teaching_max : '10+'}}
+                                        </span>
+                                    {{'landing.year' | translate}}
+                                </div>
+                                <ul class="feature-teacher-strength">
+                                    <ng-container *ngFor="let key of teacher.checkedStrength; let i = index">
+                                        <li *ngIf="i <= 2" class="feature-teacher-strength-item">
+                                            <img src="/assets/imgs/icons/{{key}}.png" />
+                                            <span [ngStyle]="{'background-color': strengthColorMap[key]}">
+                                                {{('teacher.' + key) | translate}}
+                                            </span>
+                                        </li>
+                                    </ng-container>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="arrow arrow-left" [hidden]="featuredTeachers.length == 0 || featuredTeacherOffset === 0" (click)="previousTeacher()"></div>
+                        <div class="arrow arrow-right" [hidden]="featuredTeachers.length == 0 || featuredTeacherOffset + 3 >= featuredTeachers.length - 1"
+                            (click)="nextTeacher()"></div>
+                    </div>
+                    <h2 class="title text-left">{{'landing.hero.title' | translate}}</h2>
+                    <h4 class="subtitle text-left">{{'landing.hero.subtitle' | translate}}</h4>
+                </div>
+            </div>
+            <div class="row content-max-1140 mobile-only-flex">
+                <h5 class="section-header col-12">{{'landing.teacher.title' | translate}}</h5>
+                <div class="feature-teacher-container">
+                    <div (click)="teacherClicked(teacher)" [ngClass]="{'feature-teacher-item': true}" *ngFor="let teacher of featuredTeachers; let i = index;">
+                        <div class="feature-teacher-pic" [ngStyle]="{'background-image': 'url(' + teacher.avatar_url +')'}"></div>
+                        <div class="feature-teacher-name">{{teacher.first_name}} {{teacher.last_name}}</div>
+                        <div class="feature-teacher-exp">
+                            <span class="flag">
+                                <img src="/assets/imgs/flags/{{teacher.cca2.toUpperCase()}}.png" />
+                            </span> {{'landing.exp' | translate}}
+                            <span class="text-muted">|</span>
+                                <span>
+                                    {{teacher.profile.years_of_teaching_min < 10 ? teacher.profile.years_of_teaching_min + ' - ' + teacher.profile.years_of_teaching_max : '10+'}}
+                                </span>
+                                {{'landing.year' | translate}}
+                            </div>
+                            <ul class="feature-teacher-strength">
+                                <ng-container *ngFor="let key of teacher.checkedStrength; let i = index">
+                                    <li *ngIf="i <= 2" class="feature-teacher-strength-item">
+                                        <img src="/assets/imgs/icons/{{key}}.png" />
+                                        <span [ngStyle]="{'background-color': strengthColorMap[key]}">
+                                            {{('teacher.' + key) | translate}}
+                                        </span>
+                                    </li>
+                                </ng-container>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+            <!-- Teachme Strength -->
+            <div class="row section-strength pr-2 pl-2 content-max-1140 mr-auto ml-auto">
+                <h5 class="section-header col-12">{{'landing.strength.title' | translate}}</h5>
+
+                <div class="col-12 col-sm-3 strength-item strength-payment">
+                    <div class="strength-item-inner-wrapper">
+                        <div class="strength-item-image icon-payment"></div>
+                        <h6 class="title">{{'landing.strength.payment' | translate}}</h6>
+                        <p class="description">{{'landing.strength.payment.description' | translate}}</p>
+                        <p class="full-description">{{'landing.strength.payment.full_description' | translate}}</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-3 strength-item">
+                    <div class="strength-item-inner-wrapper">
+                        <div class="strength-item-image icon-contract"></div>
+                        <h6 class="title">{{'landing.strength.no_contract' | translate}}</h6>
+                        <p class="description">{{'landing.strength.no_contract.description' | translate}}</p>
+                        <p class="full-description">{{'landing.strength.no_contract.full_description' | translate}}</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-3 strength-item">
+                    <div class="strength-item-inner-wrapper">
+                        <div class="strength-item-image icon-natural-learning"></div>
+                        <h6 class="title">{{'landing.strength.natural_learning' | translate}}</h6>
+                        <p class="description">{{'landing.strength.natural_learning.description' | translate}}</p>
+                        <p class="full-description">{{'landing.strength.natural_learning.full_description' | translate}}</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-3 strength-item">
+                    <div class="strength-item-inner-wrapper">
+                        <div class="strength-item-image icon-teacher"></div>
+                        <h6 class="title">{{'landing.strength.set_teachers' | translate}}</h6>
+                        <p class="description">{{'landing.strength.set_teachers.description' | translate}}</p>
+                        <p class="full-description">{{'landing.strength.set_teachers.full_description' | translate}}</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-3 strength-item">
+                    <div class="strength-item-inner-wrapper">
+                        <div class="strength-item-image icon-one-on-one"></div>
+                        <h6 class="title">{{'landing.strength.one_on_one' | translate}}</h6>
+                        <p class="description">{{'landing.strength.one_on_one.description' | translate}}</p>
+                        <p class="full-description">{{'landing.strength.one_on_one.full_description' | translate}}</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-3 strength-item">
+                    <div class="strength-item-inner-wrapper">
+                        <div class="strength-item-image icon-book"></div>
+                        <h6 class="title">{{'landing.strength.progressive_curriculum' | translate}}</h6>
+                        <p class="description">{{'landing.strength.progressive_curriculum.description' | translate}}</p>
+                        <p class="full-description">{{'landing.strength.progressive_curriculum.full_description' | translate}}</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-3 strength-item">
+                    <div class="strength-item-inner-wrapper">
+                        <div class="strength-item-image icon-pc"></div>
+                        <h6 class="title">{{'landing.strength.percent_of_profits' | translate}}</h6>
+                        <p class="description">{{'landing.strength.percent_of_profits.description' | translate}}</p>
+                        <p class="full-description">{{'landing.strength.percent_of_profits.full_description' | translate}}</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-3 strength-item">
+                    <div class="strength-item-inner-wrapper">
+                        <div class="strength-item-image icon-baby"></div>
+                        <h6 class="title">{{'landing.strength.student_focused' | translate}}</h6>
+                        <p class="description">{{'landing.strength.student_focused.description' | translate}}</p>
+                        <p class="full-description">{{'landing.strength.student_focused.full_description' | translate}}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Teacher Strength -->
+            <div class="row section-teacher-strength">
+                <div class="content-max-1140 mr-auto ml-auto">
+                    <h5 class="section-header col-12">{{'landing.teacher_strength.title' | translate}}</h5>
+                </div>
+                <div class="content-max-1140 mr-auto ml-auto teacher-strength-super-container">
+                    <div class="teacher-strength-container d-flex scroller-container">
+                        <div [ngClass]="{'teacher-strength-item': true, 'scroller-item': true}" *ngFor="let s of strengths">
+                            <div class="teacher-strength-pic"><img src="/assets/imgs/{{s}}.png" /></div>
+                            <div class="teacher-strength-title">{{('landing.teacher_strength.' + s + '.title') | translate}}</div>
+                            <div class="teacher-strength-summary">{{'landing.teacher_strength.' + s + '.summary' | translate}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row section-customization">
+                <div class="girl"></div>
+                <div class="content">
+                    <h5 class="title">{{'landing.customization.title' | translate}}</h5>
+                    <h6 class="subtitle">{{'landing.customization.subtitle' | translate}}</h6>
+                    <div>
+                        <button class="call-to-action-button call-to-action-button-white ml-3 mr-0">{{'landing.hero.call_to_action_button_title' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row section-classroom">
+                <div class="pr-2 pl-2 content-max-1140 mr-auto ml-auto col-12">
+                    <h5 class="section-header col-12">{{'landing.classroom.title' | translate}}</h5>
+                    <div class="classroom-item-container row">
+                        <div *ngFor="let key of classroomKeys" class="col-12 col-sm-4">
+                            <div class="classroom-item">
+                                <div class="classroom-title">
+                                    <span class="icon"><img src="/assets/imgs/icons/classroom_features_{{key}}.png" /></span>
+                                    {{('classroom.' + key) | translate}}
+                                </div>
+                                <p class="classroom-text">{{('classroom.' + key +'_text') | translate}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row section-philosophy content-max-1140 mr-auto ml-auto">
+                <h5 class="section-header col-12">{{'landing.philosophy.title' | translate}}</h5>
+                <p class="text-muted text-center col-12" style="font-size: 18px'">{{'landing.philosophy.description' | translate}}</p>
+
+                <div class="col-12 col-sm-4 philosophy-item">
+                    <div class="philosophy-item-image icon-girl"></div>
+                    <h6 class="philosophy-item-title" [innerHTML]="'landing.philosophy_1_title' | translate"></h6>
+                    <ul class="philosophy-item">
+                        <li>{{'landing.philosophy_1_1' | translate}}</li>
+                        <li>{{'landing.philosophy_1_2' | translate}}</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-4 philosophy-item">
+                    <div class="philosophy-item-image icon-standing-teacher"></div>
+                    <h6 class="philosophy-item-title" [innerHTML]="'landing.philosophy_2_title' | translate"></h6>
+                    <ul class="philosophy-item">
+                        <li>{{'landing.philosophy_2_1' | translate}}</li>
+                        <li>{{'landing.philosophy_2_2' | translate}}</li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-4 philosophy-item">
+                    <div class="philosophy-item-image icon-professor"></div>
+                    <h6 class="philosophy-item-title" [innerHTML]="'landing.philosophy_3_title' | translate"></h6>
+                    <ul class="philosophy-item">
+                        <li>{{'landing.philosophy_3_1' | translate}}</li>
+                        <li>{{'landing.philosophy_3_2' | translate}}</li>
+                    </ul>
+                </div>
+                <div class="col-12 text-center">
+                    <button class="call-to-action-button">{{'landing.hero.call_to_action_button_title' | translate}}</button>
+                </div>
+
+            </div>
+
+            <div class="row section-affordable">
+                <div class="content">
+                    <h5 class="title">{{'landing.affordable.title' | translate}}</h5>
+                    <h6 class="subtitle">{{'landing.affordable.subtitle' | translate}}</h6>
+                    <div>
+                        <button class="call-to-action-button call-to-action-button-white ml-3 mr-0">{{'landing.hero.call_to_action_button_title' | translate}}</button>
+                    </div>
+                </div>
+                <div class="boy"></div>
+            </div>
+
+            <!-- <div class="row section-student-review pl-4 pr-4 pb-4 pt-0 content-max-1140">
+                <div class="col-12 section-header">{{'landing.student_say.title' | translate}}</div>
+                <div class="col-12 col-sm-6">
+                    <div class="video">
+                        <video id="my-video" class="video-js  vjs-default-skin vjs-16-9  vjs-big-play-centered" controls preload="auto" data-setup='{"fluid": true}' poster="https://www.technobuffalo.com/wp-content/uploads/2014/03/Yoshis-New-Island-Art-3.jpg">
+                            <source src="https://media.w3.org/2010/05/sintel/trailer.mp4" type='video/mp4'>
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a web browser that
+                                <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                            </p>
+                        </video>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 review">
+                    <div class="page" *ngIf="currentReviewIndex == 1">
+                        <p class="quote">“{{'landing.nemo_parent' | translate}}”</p>
+                        <div class="reviewer">
+                            <img src="/assets/imgs/nemo-parent.jpg" />
+                            <div class="text-center">
+                                <div class="reviewer-name">Nemo 媽媽</div>
+                                <div class="reviewer-info">一年級家長</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page" *ngIf="currentReviewIndex == 2">
+                        <p class="quote">“{{'landing.jessie_parent' | translate}}”</p>
+                        <div class="reviewer">
+                            <img src="/assets/imgs/nemo-parent.jpg" />
+                            <div class="text-center">
+                                <div class="reviewer-name">Jessie 媽媽</div>
+                                <div class="reviewer-info">一年級家長</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page" *ngIf="currentReviewIndex == 3">
+                        <p class="quote">“{{'landing.lisa_parent' | translate}}”</p>
+                        <div class="reviewer">
+                            <img src="/assets/imgs/nemo-parent.jpg" />
+                            <div class="text-center">
+                                <div class="reviewer-name">Lisa 媽媽</div>
+                                <div class="reviewer-info">一年級家長</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-dot-container">
+                        <span class="page-dot" [ngClass]="{active: currentReviewIndex == 1}" (click)="focusToPage(1)"></span>
+                        <span class="page-dot" [ngClass]="{active: currentReviewIndex == 2}" (click)="focusToPage(2)"></span>
+                        <span class="page-dot" [ngClass]="{active: currentReviewIndex == 3}" (click)="focusToPage(3)"></span>
+                    </div>
+                </div>
+            </div> -->
+            <div class="section-us row">
+                <div class="content-max-1140 mr-auto ml-auto row form">
+                    <h5 class="section-header col-12">{{'landing.us.title' | translate}}</h5>
+                    <img class="mr-auto ml-auto us-img" src="/assets/imgs/about_our_service_illu.png">
+                    <div class="col-12 col-sm-6">
+                        <input name="name" class="form-control mt-3 mb-3" placeholder="{{'landing.us.name_field' | translate}}" />
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <input name="company" class="form-control mt-3 mb-3" placeholder="{{'landing.us.company_field' | translate}}" />
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <input name="email" class="form-control mt-3 mb-3" placeholder="{{'landing.us.email_field' | translate}}" />
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <input name="contact_method" class="form-control mt-3 mb-3" placeholder="{{'landing.us.contact_method_field' | translate}}" />
+                    </div>
+                    <div class="col-12">
+                        <textarea class="form-control mt-3" name="message" placeholder="{{'landing.us.message_field' | translate}}"></textarea>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button class="call-to-action-button" (click)="postContactForm()">{{'landing.us.submit' | translate}}</button>
+                    </div>
+
+                    <div class="col-12 text-center" style="margin: 16px 0 24px;">
+                        <span class="hairline d-none d-sm-inline-block"></span>
+                        <span class="or-contact-text text-center">{{'landing.us.or_contact_us_directly' | translate}}</span>
+                        <span class="hairline d-none d-sm-inline-block"></span>
+                    </div>
+                    <div class="col-12">
+                        <ul class="mr-auto ml-auto contact-item-list">
+                            <li class="contact-item"><img src="/assets/imgs/location.png">{{'landing.us.contact_address' | translate}}</li>
+                            <li class="contact-item"><img src="/assets/imgs/contact.png">+8860989263465</li>
+                            <li class="contact-item"><img src="/assets/imgs/gmail.png">phil@teachme.vip</li>
+                        </ul>
+                    </div>
+                    <h5 class="section-header col-12">{{'about_us.title' | translate}}</h5>
+                    <div class="col-12 mt-4 mb-4 text">{{'about_us.text' | translate}}</div>
+                </div>
+            </div>
+            <footer class="content-max-1140 mr-auto ml-auto">
+                <img class="full-brand-image order-0" src="/assets/imgs/brand.png" />
+                <div class="company-info order-2 order-sm-1 d-flex">
+                    <div class="d-block d-sm-none text-center mt-3 mb-3">
+                        <a href="https://www.facebook.com/Teachme.vip/" class="mr-2 ml-2 d-inline-block">
+                            <img src="/assets/imgs/wechat.png" width="30" height="30" />
+                        </a>
+                        <a href="https://www.facebook.com/Teachme.vip/" class="mr-2 ml-2 d-inline-block">
+                            <img src="/assets/imgs/fb.png" width="30" height="30" />
+                        </a>
+                    </div>
+                    <div class="order-3 order-sm-1">© 2018 <a href="/">https://www.teachme.vip</a></div>
+                    <div class="order-4 order-sm-2">
+                        教我有限公司(TeachMe)版權所有 All rights reserved.
+                        <div class="d-none d-sm-inline-block">
+                            <a href="https://www.facebook.com/Teachme.vip/">
+                                <img src="/assets/imgs/wechat.png" width="20" height="20" />
+                            </a>
+                            <a href="https://www.facebook.com/Teachme.vip/">
+                                <img src="/assets/imgs/fb.png" width="20" height="20" />
+                            </a>
+                        </div>
+                        <div>{{'landing.registration_info' | translate}}</div>
+                    </div>
+                </div>
+                <img class="fb-qr-code order-1 order-sm-2" src="/assets/imgs/fb-qr.png" />
+            </footer>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar color="white">
+    <ion-title style="text-align: center;">
+      <ion-label color="primary">{{ 'pay_lesson.title' | translate }}</ion-label>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content style="background-color:#F7F7F7;">
+  <div id="message">
+    <ion-icon name="information-circle" style="color: #0D7CCE; height: 13px; width: 14px; vertical-align: middle; padding:5px 0 0 0; display: inline-block;"></ion-icon>
+    <span style="padding-left: 10px; font-size: 14px; color: #5AA4D2; vertical-align: middle; padding:10px 0 0 10px; display:inline-block;">to be paid 3:00 min</span>
+  </div>
+  <div id="payment-amount" style=" display:flex; align-items: center;">
+    <div class="image">
+      <img class="image" src="../../../assets/imgs/icons/icon-payment-blue.png">
+    </div>
+    <div id="amount">
+      <h1>{{ price }}</h1>
+      <p style="line-height: 0;">{{ 'pay_lesson.expected_to_pay' | translate }}</p>
+    </div>
+  </div>
+  <div>
+    <div class="card">
+      <div class="header">
+        <div class="header-line"></div>
+        <div class="header-padding">{{ 'pay_lesson.choose_student' | translate}}</div>
+      </div>
+    </div>
+    <form [formGroup]="studentForm">
+      <ion-list radio-group formControlName="childId">
+        <ion-item no-padding *ngFor="let child of children; let i = index;">
+          <ion-label *ngIf="child.name" style="color: #4A4A4A; padding-left:16px;">{{ child.name }}</ion-label>
+          <ion-label *ngIf="!child.name && !child.age && child.gender" style="color: #4A4A4A; padding-left:16px;">{{ child.gender }}</ion-label>
+          <ion-label *ngIf="!child.name && !child.gender && child.age" style="color: #4A4A4A; padding-left:16px;">{{ child.age }}</ion-label>
+          <ion-radio [value]="child.id"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </form>
+    <div class="card">
+      <div class="header">
+        <div class="header-line"></div>
+        <div class="header-padding">{{ 'pay_lesson.choose_your_payment_method' | translate}}</div>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="paymentForm">
+    <ion-list radio-group formControlName="formControlPaymentMethod">
+      <div *ngFor="let paymentMethod of paymentOptionKeys" ion-item no-padding style="margin-bottom:5px;">
+        <ion-label style="color: #4A4A4A; padding-left:16px;">
+          <img style="width:15px; height:15px; margin-right:20px;" [src]="paymentOption[paymentMethod].icon"> {{ paymentOption[paymentMethod].label }}</ion-label>
+        <ion-radio [value]="paymentMethod"></ion-radio>
+        </div>
+    </ion-list>
+  </form>
+
+</ion-content>
+<ion-footer style="text-align:center; background: #FFFFFF;">
+  <button [disabled]="buttonDisabled()" ion-button class="pay-button" (click)="pay()">{{ 'pay_lesson.pay' | translate }}</button>
+</ion-footer>

@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-navbar color="white">
+        <button ion-button menuToggle="page-menu" color="primary">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center;">
+            <img src="../../assets/imgs/logo@3x.png" height="34" />
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="openUserMenu()">
+                <img src="../../assets/imgs/me@3x.png" height="18" />
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding center text-center class="flex-vertical-center">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12 class="header">{{'teachme' | translate}} | {{'login' | translate}}</ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-3>
+                <ion-input [value]="phoneCallingCode" [(ngModel)]="phoneCallingCode" maxLength="4" (keyup)="checkPhoneCallingCode()" type="text"
+                    placeholder="{{'login.phone_calling_code_placeholder' | translate}}">
+                </ion-input>
+            </ion-col>
+            <ion-col col-9>
+                <ion-input [value]="phoneNumber" [(ngModel)]="phoneNumber" maxLength="10" (keyup)="checkPhoneNumber()" type="text" placeholder="{{'login.phone_number_placeholder' | translate}}">
+                </ion-input>
+            </ion-col>
+            <ion-col col-12 *ngIf="hasSentVerificationCode">
+                <ion-input [value]="verificationCode" [(ngModel)]="verificationCode" maxLength="5" (keyup)="checkVerificationDigit()" type="text"
+                    placeholder="{{'login.verification_code_placeholder' | translate}}">
+                </ion-input>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-label text-left color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <button [disabled]="(!validPhoneNumber || !validPhoneCallingCode)" *ngIf="!hasSentVerificationCode" ion-button block color="primary"
+                (click)="verifyPhoneNumber()">
+                {{'login.send_verification_code' | translate}}
+            </button>
+            <button [disabled]="!validVerificationCodeDigit" *ngIf="hasSentVerificationCode" ion-button block color="primary" (click)="verifyVerificationCode()">
+                {{'login.next' | translate}}
+            </button>
+        </ion-row>
+    </ion-grid>
+</ion-content>

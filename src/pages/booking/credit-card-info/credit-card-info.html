@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-navbar color="white">
+        <button ion-button menuToggle="page-menu" color="primary">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center;">
+            <ion-label color="primary">{{ 'pay_lesson.credit_card_info.title' | translate }}</ion-label>
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="openUserMenu()">
+                <img src="../../assets/imgs/me@3x.png" height="18" />
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div id="message">
+        <ion-icon name="information-circle" style="color: #0D7CCE; height: 13px; width: 14px; vertical-align: middle; padding:5px 0 0 0; display: inline-block;"></ion-icon>
+        <span style="padding-left: 10px; font-size: 14px; color: #5AA4D2; vertical-align: middle; padding:10px 0 0 10px; display:inline-block;">Please submit your info</span>
+    </div>
+    <ion-list no-lines style="margin-top:25px;">
+        <form [formGroup]="creditCardInfoForm">
+            <ion-item class="label">{{ 'pay_lesson.credit_card_info.card_number' | translate }}</ion-item>
+            <ion-item class="input">
+                <ion-input type="number" formControlName='cardNumber' placeholder="{{ 'pay_lesson.credit_card_info.card_number_placeholder' | translate }}"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="cardNumberErrorMessage" style="margin: -10px 0px;">
+                <ion-label class="error-message">{{ cardNumberErrorMessage }}</ion-label>
+            </ion-item>
+            <ion-item class="label">{{ 'pay_lesson.credit_card_info.your_name' | translate }}</ion-item>
+            <ion-item class="input">
+                <ion-input type="text" formControlName='name' placeholder="{{ 'pay_lesson.credit_card_info.your_name_placeholder' | translate }}"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="nameErrorMessage" style="margin: -10px 0px;">
+                <ion-label class="error-message">{{ nameErrorMessage }}</ion-label>
+            </ion-item>
+            <ion-item class="label">{{ 'pay_lesson.credit_card_info.credit_card_expiration_date' | translate }}</ion-item>
+            <ion-item class="input">
+                <ion-datetime displayFormat="MM/YYYY" formControlName="expiryDate" placeholder="{{ 'pay_lesson.credit_card_info.credit_card_expiration_date_placeholder' | translate }}" max="2023-12-31"></ion-datetime>
+            </ion-item>
+            <ion-item *ngIf="expiryDateErrorMessage" style="margin: -10px 0px;">
+                <ion-label class="error-message">{{ expiryDateErrorMessage }}</ion-label>
+            </ion-item>
+            <ion-item class="label">{{ 'pay_lesson.credit_card_info.cvv' | translate }}</ion-item>
+            <ion-item class="input">
+                <ion-input type="number" formControlName='cvv' placeholder="{{ 'pay_lesson.credit_card_info.cvv_placeholder' | translate }}"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="cvvErrorMessage" style="margin: -10px 0px;">
+                <ion-label class="error-message">{{ cvvErrorMessage }}</ion-label>
+            </ion-item>
+        </form>
+    </ion-list>
+</ion-content>
+<ion-footer style="text-align:center; background: #FFFFFF;">
+    <button ion-button class="pay-button" (click)="pay()">{{ 'pay_lesson.pay' | translate }}</button>
+</ion-footer>

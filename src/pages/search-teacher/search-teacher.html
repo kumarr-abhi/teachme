@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="white">
+    <button ion-button menuToggle="page-menu" color="primary">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="text-align: center;">
+      <ion-label color="primary">{{'teacher.find_teacher.title' | translate}}</ion-label>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="openUserMenu()">
+        <img src="../../assets/imgs/me@3x.png" height="18" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content style="background-color:#F0F2F5;">
+
+  <ion-row style="margin-top:-25px; color:#4A4A4A; border-bottom: 1px solid lightgray;">
+    <ion-col ion-item no-lines style="border-right:1px solid lightgrey;">
+      <ion-label floating>Gender</ion-label>
+      <ion-select (ionChange)="setOption('gender',$event)" interface="popover" [(ngModel)]="gender">
+        <ion-option *ngFor="let gender of teacherSearchOptions.genders" [value]="gender">{{gender}}</ion-option>
+      </ion-select>
+    </ion-col>
+    <ion-col ion-item no-lines style="border-right:1px solid lightgrey;">
+      <ion-label floating>Country</ion-label>
+      <ion-select (ionChange)="setOption('country',$event)" interface="popover" [(ngModel)]="country">
+        <ion-option *ngFor="let country of teacherSearchOptions.countries" [value]="country">{{country}}</ion-option>
+      </ion-select>
+    </ion-col>
+    <ion-col ion-item no-lines style="border-right:1px solid lightgrey;">
+      <ion-label floating>Strength</ion-label>
+      <ion-select (ionChange)="setOption('strength',$event)" interface="popover" [(ngModel)]="strength">
+        <ion-option *ngFor="let strength of teacherSearchOptions.strengths" [value]="strength">{{strength}}</ion-option>
+      </ion-select>
+    </ion-col>
+    <ion-col ion-item no-lines>
+      <ion-label floating>Experience</ion-label>
+      <ion-select (ionChange)="setOption('experience',$event)" interface="popover" [(ngModel)]="experience">
+        <ion-option *ngFor="let experience of teacherSearchOptions.experiences" [value]="experience">{{experience}}</ion-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <ion-card *ngFor="let teacher of teachers" class="cardStyle" (click)="cardClicked(teacher)">
+    <ion-item style="padding-left: auto !important;">
+      <ion-avatar item-start>
+        <img style="width:60px !important; height:60px !important" src="{{ this.teacher.avatar_url }}">
+      </ion-avatar>
+      <div style="margin-top:0px !important;">
+      <h1>{{ teacher.first_name }} {{teacher.last_name}}</h1>
+      <img style="width: 23px; height: 15px; margin-left:5px;" [src]="teacher.flag_url" />
+      <p style="padding-top: 5px; padding-bottom: 5px;">{{ teacher.current_country }} | {{ teacher.profile.years_of_teaching_min }} - {{ teacher.profile.years_of_teaching_max
+        }} years experience | {{ teacher.education.highest_degree }}</p>
+      <div *ngFor="let strength of teacherStrength | teacherStrength: teacher" style="color: #27c4ff; border:1px solid #27c4ff; border-radius:5px; padding:4px; margin:5px; font-size: 14px; float: left;">{{ strength }}</div>
+    </div>
+    </ion-item>
+  </ion-card>
+</ion-content>

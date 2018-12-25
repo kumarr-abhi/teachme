@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-navbar color="white">
+    <button ion-button menuToggle="page-menu" color="primary">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="text-align: center;">
+      <ion-label color="primary">{{ 'booking.title' | translate }}</ion-label>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="openUserMenu()">
+        <img src="../../assets/imgs/me@3x.png" height="18" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-row nowrap class="circle-div">
+    <div *ngFor="let day of days; let i = index;" style="margin-bottom:10px;">
+      <div class="circle" [ngClass]="{'filled-circle': i==isSelectedDay(i), 'greyed-circle': isWeekdayAvailable(i)}" (click)="selectDay(i, day)">{{ day }}</div>
+      <div class="dot" [style.display]="showDaysDots(i) ? 'block' : 'none'"></div>
+    </div>
+  </ion-row>
+  <ion-row class="time-date-div" style="border-top:1px solid #D8D8D8;">
+    <ion-col>
+      <ion-card-header class="header">
+        <div class="header-line"></div>
+        <div class="header-padding">{{ 'booking.choose_time' | translate }}</div>
+      </ion-card-header>
+    </ion-col>
+    <ion-col>
+      <div class="button-div">
+        <button ion-button class="button-class" [color]="checkMeridiem()!='am' ? 'light' : ''" style="margin: 0px !important;" (click)="selectMeridiem('am')">{{ 'booking.am' | translate}}</button>
+        <button ion-button class="button-class" [color]="checkMeridiem()!='pm' ? 'light' : ''" style="margin: 0px !important;" (click)="selectMeridiem('pm')">{{ 'booking.pm' | translate}}</button>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row nowrap class="circle-div">
+    <div *ngFor="let time of times; let i = index;" style="margin-bottom:10px;">
+      <div class="circle" [ngClass]="{'filled-circle': isSelectedTime(time), 'greyed-circle': isTimeAvailable(time) }" (click)="selectTime(i, time)">{{ time }}</div>
+      <div class="dot" [style.display]="showTimesDots(time) ? 'block' : 'none'"></div>
+    </div>
+  </ion-row>
+  <ion-row class="time-date-div">
+    <ion-col>
+      <ion-card-header class="header">
+        <div class="header-line"></div>
+        <div class="header-padding">{{ 'booking.choose_date' | translate }}</div>
+      </ion-card-header>
+    </ion-col>
+    <ion-col>
+      <div class="button-div" style="margin-top:0px !important;">
+        <button [disabled]="disableQuickSelectButton" ion-button block outline (click)="quickSelect()">{{ 'booking.quick_select' | translate }}</button>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row nowrap class="circle-div" *ngFor="let dateKey of dates | datePipe">
+    <div>
+      <div class="date-circle">{{ dateKey }}</div>
+    </div>
+    <div *ngFor="let date of dates | datePipe: dateKey; let i = index;">
+      <div class="circle" [ngClass]="{'filled-circle': isSelectedDate(i,dateKey)}" (click)="selectDate(i, dateKey, date)">{{ date }}</div>
+    </div>
+  </ion-row>
+  <!-- <ion-row nowrap class="circle-div" *ngFor="let dateKey of dates | datePipe">
+    <div class="date-circle" style="line-height: 20px; white-space:normal;">
+      {{ dateKey }}
+    </div>
+    <div class="circle" *ngFor="let date of dates | datePipe: dateKey; let i = index;" [ngClass]="{'filled-circle': isSelectedDate(i,dateKey)}"
+      (click)="selectDate(i, dateKey, date)">
+      {{ date }}
+    </div>
+  </ion-row> -->
+</ion-content>
+
+<ion-footer style="display:inline-block;">
+  <ion-row>
+    <ion-col>
+      <div id="message">
+        <ion-row style="padding: 5px 0 0 0; height:100%; text-align:center;">
+          <ion-col>
+            <ion-icon name="information-circle" style="color: #0D7CCE; height: 13px; width: 14px; vertical-align: middle"></ion-icon>
+            <span style="padding-left: 10px; font-size: 14px; color: #5AA4D2; text-align: center; vertical-align: middle;">{{ 'booking.message.select' | translate}} {{ remainingDateForNextDiscount }} {{ 'booking.message.more_to_get'
+              | translate}} {{ discount }} {{ 'booking.message.discount' | translate}}</span>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col style="padding-left: 15px; color: #06B9FC">
+      <h1 style="line-height: 0; font-size: 20px;">{{discountedPrice}}
+        <span style="text-decoration: line-through; font-size: 12px;">{{originalPrice}}</span>
+      </h1>
+      <p style="font-size: 10px;">{{pricePerClass}}</p>
+    </ion-col>
+    <ion-col>
+      <button [disabled]="disablePaymentButton" ion-button block primary (click)="payment()">{{ 'booking.payment' | translate }}</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

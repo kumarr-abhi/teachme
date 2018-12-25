@@ -1,0 +1,29 @@
+<ion-content>
+        <ion-card no-lines *ngFor="let schedule of schedules; let i = index;">
+            <ion-card-header class="cardStyle">
+                <ion-item style="padding-left: auto !important;">
+                    <ion-avatar item-start>
+                        <img style="width:60px !important; height:60px !important;" [src]="schedule.teacher.avatar_url">
+                    </ion-avatar>
+                    <h1 style="color: #06B9FC; font-size: 18px !important;">{{ schedule.teacher.first_name }} {{ schedule.teacher.last_name }}</h1>
+                    <img style="width: 14px; height: 10px; margin-left:5px;" src="../../../assets/imgs/flags/IN.png" />
+                    <p style="padding-top: 5px; padding-bottom: 5px; color: #06B9FC; font-size: 14px !important;">ZOOM ID {{ schedule.teacher.id }}</p>
+                </ion-item>
+            </ion-card-header>
+            <ion-list class="header" *ngFor="let day of schedule.dayWiseClasses | schedulePipe">
+                <div class="header-line"></div>
+                <ion-item style="border-top: 1px solid #F0F2F5; border-bottom: 1px solid #F0F2F5;">
+                    <ion-row style="width:100%; padding-left:10px;">
+                        <ion-row style="width:100%; padding:1px;">
+                            <ion-col style="padding:5px 0; font-size:16px !important; color:#4A4A4A;">{{ day.slice(0,day.length-6) }}</ion-col>
+                            <ion-col text-right style="padding:5px 0; font-size:12px !important; color: #9B9B9B;">Next Lesson {{ nextLesson(i, day) }}</ion-col>
+                        </ion-row>
+                        <ion-row style="width:100%; padding:1px;">
+                            <ion-col style="padding:5px 0; font-size:16px !important; color:#4A4A4A;">{{ startTime(i, day) }} - {{ endTime(i, day) }}</ion-col>
+                            <ion-col text-right style="padding:5px 0; font-size:12px !important; color: #9B9B9B;">Final Lesson {{ finalLesson(i, day) }}</ion-col>
+                        </ion-row>
+                    </ion-row>
+                </ion-item>
+            </ion-list>
+        </ion-card>
+</ion-content>

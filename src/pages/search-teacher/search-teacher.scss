@@ -1,0 +1,31 @@
+page-search-teacher {
+    ion-item.item.item-block.item-ios,
+    ion-item.item.item-block.item-md {
+    padding-left: 0px !important;
+    display: flex;
+    align-items: flex-start;
+    }
+  
+    .cardStyle{
+        margin-top: 0px;
+        width:100%; 
+        margin-left:0px;
+        padding: 10px 16px 10px 16px;
+        box-shadow: none;
+    }
+
+    .cardStyle > ion-item h1,
+    .cardStyle > ion-item img{
+        display: inline;
+    }
+
+    .item-md {
+        padding: 0px 16px 0px 16px !important;
+    }
+    .select-md .select-icon .select-icon-inner{
+        margin-top: -6px !important;
+    }
+    .label-md{
+        margin: 5px 0px 5px 0px !important;
+    }
+}

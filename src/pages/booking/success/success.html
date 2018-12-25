@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-navbar color="white">
+        <button ion-button menuToggle="page-menu" color="primary">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center;">
+            <ion-label *ngIf="page == 'trialPage'" color="primary">{{ 'booking.trial_lesson' | translate}}</ion-label>
+            <ion-label *ngIf="page != 'trialPage' && page != 'paymentSuccessPage'" color="primary">{{ 'booking.success_title' | translate}}</ion-label>
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="openUserMenu()">
+                <img src="../../../assets/imgs/me@3x.png" height="18" />
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content [style.background-color]="page == 'trialPage' ? '#F0F2F5' : '#FFFFFF'">
+    <div *ngIf="page == 'trialPage'">
+        <ion-row style="padding: 0px !important; text-align:center;">
+            <ion-col class="child-information">
+                <ion-icon name="information-circle" style="color: rgba(13,124,206,1); height: 13px; width: 13px;"></ion-icon>
+                <span style="padding-left: 20px; font-size: 14px; color: #0D7CCE; text-align: center; vertical-align: middle;">Please choose your time and we will contact you</span>
+            </ion-col>
+        </ion-row>
+        <div>
+            <div class="card">
+                <div class="header">
+                    <div class="header-line"></div>
+                    <div class="header-padding">{{ 'Choose your time' | translate}}</div>
+                </div>
+            </div>
+        </div>
+        <ion-list radio-group>
+            <ion-item no-padding *ngFor="let day of weekdays">
+                <ion-label style="color: #4A4A4A; padding-left:16px;">{{ day }}</ion-label>
+                <ion-radio [value]="day" (click)="selectDay(day)"></ion-radio>
+            </ion-item>
+        </ion-list>
+    </div>
+    <ion-grid class="flex-vertical-center" *ngIf="trialBookingSuccess">
+        <ion-row>
+            <img src="./assets/imgs/success@3x.png" width="102px" height="76px" />
+        </ion-row>
+        <ion-row style="padding-top:30px;">
+            <p class="text">{{'booking.trial_success.row_1' | translate}}</p>
+        </ion-row>
+        <ion-row>
+            <p class="text">{{'booking.trial_success.row_2' | translate}}</p>
+        </ion-row>
+        <ion-row>
+            <p class="text">{{'booking.trial_success.row_3' | translate}}</p>
+        </ion-row>
+    </ion-grid>
+    <ion-grid class="flex-vertical-center" *ngIf="page == 'paymentSuccessPage'">
+        <ion-row>
+            <img src="./assets/imgs/success@3x.png" width="102px" height="76px" />
+        </ion-row>
+        <ion-row style="padding-top:30px;">
+            <p class="text">{{'booking.payment_success.row_1' | translate}}</p>
+        </ion-row>
+        <ion-row>
+            <p class="text">{{'booking.payment_success.row_2' | translate}}</p>
+        </ion-row>
+        <ion-row style="width:100%; padding:0 20px 0 20px;">
+            <button ion-button block (click)="checkSchedule()">{{'booking.check' | translate}}</button>
+        </ion-row>
+
+    </ion-grid>
+</ion-content>
+<ion-footer style="text-align:center; background: #FFFFFF;" *ngIf="page == 'trialPage'">
+    <button [disabled]="buttonDisabled()" ion-button class="sure-button" (click)="sure()">{{ 'booking.sure' | translate }}</button>
+</ion-footer>

@@ -1,0 +1,50 @@
+<ion-menu id="page-menu" [content]="pageMenu" type="overlay">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>{{'pages' | translate}}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <button menuClose ion-item *ngFor="let p of pages" [class.active-menu]="checkActivePageMenu(p)" (click)="openPage(p)">
+                {{p.title | translate}}
+            </button>
+            <button menuClose ion-item (click)="redirectTo('/teacher')">
+                {{'teacher_log_in' | translate}}
+            </button>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<ion-menu id="user-menu" [content]="userMenu" type="overlay" side="right">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>User</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list *ngIf="user" style="text-align:center; padding:11px 0px;">
+            <img *ngIf="user.avatar_file_name" [src]="user.avatar_file_name" style="width:80px; height:80px; border-radius:50%; background-color:#4A4A4A;">
+        </ion-list>
+        <ion-list *ngIf="user" ion-item no-lines style="text-align:center; color:#4A4A4A; font-size: 16px;">
+            {{ user.first_name }} {{ user.last_name }}
+        </ion-list>
+        <ion-list>
+            <button menuClose="right" ion-item no-lines *ngFor="let userPage of userPages" [class.active-menu]="checkActiveUserMenu(userPage)"
+                (click)="openPageForUser(userPage)">
+                {{ userPage.title | translate }}
+            </button>
+        </ion-list>
+    </ion-content>
+    <ion-footer>
+        <ion-list>
+            <button menuClose="right" ion-item no-lines style="color:#26C4FF; text-align:center;" (click)="signout()">
+                SIGN OUT
+            </button>
+        </ion-list>
+    </ion-footer>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #pageMenu #userMenu swipeBackEnabled="false"></ion-nav>

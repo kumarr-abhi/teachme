@@ -1,0 +1,22 @@
+<ion-header no-border id="header">
+    <button ion-button color="light" class="close-button" (click)="closeModal()">
+        <ion-icon name="close" style="font-size:50px;"></ion-icon>
+    </button>
+</ion-header>
+<ion-content id="content">
+    <div id="messageDiv">
+        <ion-row style="width:100%;" *ngFor="let package of packages; let i = index;"
+            (click)="selectPackage(i,package)">
+            <div class="packageDiv" [class.active]="isSelectedIndex(i)">
+                <h1 class="first-h1">{{ package.discounted_price }}{{ currency }}
+                    <span style="text-decoration: line-through; font-size: 13px">{{ package.original_price }}{{ currency }}</span>
+                </h1>
+                <h1 class="second-h1">X {{ package.classes }}
+                    <span style="font-size: 12px;">{{ currency }}{{ package.price_per_class }}/each class</span>
+                </h1>
+            </div>
+        </ion-row>
+    </div>
+    <div>
+    </div>
+</ion-content>

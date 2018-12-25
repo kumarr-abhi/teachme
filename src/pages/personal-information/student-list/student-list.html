@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar color="white">
+        <button ion-button menuToggle="page-menu" color="primary">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center;">
+            <ion-label color="primary">{{ 'student' | translate }}</ion-label>
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="openUserMenu()">
+                <img src="../../../assets/imgs/me@3x.png" height="18" />
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content style="background: #F0F2F5;">
+    <ion-list *ngIf="children">
+        <button ion-item item-button-right *ngFor="let child of children" (click)="selectChild(child)">
+            <label *ngIf="child.name" style="color: #4A4A4A; padding-left:16px;">{{ child.name }}</label>
+            <label *ngIf="!child.name && !child.age && child.gender" style="color: #4A4A4A; padding-left:16px;">{{ gender[child.gender] }}</label>
+            <label *ngIf="!child.name && !child.gender && child.age" style="color: #4A4A4A; padding-left:16px;">{{ child.age }}</label>
+            <img class="arrow-image" src="../../../assets/imgs/arrow@3x.png" />
+        </button>
+    </ion-list>
+</ion-content>

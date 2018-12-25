@@ -1,0 +1,83 @@
+page-book-time {
+    .circle-div{
+        margin-right:auto;
+        margin-left:11px;
+        overflow: auto;
+        white-space: nowrap;
+    }
+    .circle{
+        width:45px;
+        height:45px;
+        border-radius:50%;
+        margin: 20px 6px 10px 6px;
+        text-align:center;
+        line-height:45px;
+        border: 1px solid #F7F7F7;
+    }
+    .date-circle{
+        width:45px;
+        height:45px;
+        border-radius:50%;
+        float:left;
+        margin: 20px 6px 0px 6px;
+        text-align:center;
+        line-height:20px;
+        background-color: #F7F7F7;
+        white-space: normal;
+    }
+    .filled-circle{
+        background-color:#06B9FC;
+        color:#ffffff;
+        
+    }
+    .greyed-circle{
+        background-color:gray;
+        pointer-events: none;
+        opacity: 0.2;
+    }
+    .time-date-div{
+        width:100%;
+        height: 44px;
+        position:relative;
+    }
+    .button-div{
+        float:right;
+        margin-top:8px;
+        padding:5px;
+    }
+    .button-class{
+        width:58px !important;
+        height:26px !important;
+        padding:-10px;
+    }
+    .header{
+        position: absolute;
+    }
+    .header-line{
+        width: 4px; 
+        border: 2px solid #27c4ff;
+    }
+    .header-padding{
+        padding-left:10px;
+    }
+    .header > div{
+        display: inline;;
+    }
+    .card-header-ios{
+        padding: 0px !important;
+    }
+    #message{        
+        height:38px;
+        width:100%;
+        background-color: #E4F3FF;
+    }
+    .dot{
+        width: 6px;
+        height: 6px;
+        margin-left: auto;
+        margin-right: auto;
+        background: #D8D8D8;
+        border-radius: 50%;
+        
+    }
+}

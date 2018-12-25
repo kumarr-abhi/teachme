@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="white" mode="ios">
+    <button ion-button menuToggle="page-menu" color="primary">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="text-align: center;">
+        <img src="./assets/imgs/logo@3x.png" height="34" />
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="overlay"></div>
+    <div class="content-wrapper">
+        <h2>{{'about_us.title'| translate }}</h2>
+        <p>{{'about_us.text' | translate}}</p>
+        <ul class="mr-auto ml-auto contact-item-list">
+            <li class="contact-item"><img src="/assets/imgs/location.png">{{'landing.us.contact_address' | translate}}</li>
+            <li class="contact-item"><img src="/assets/imgs/contact.png">+8860989263465</li>
+            <li class="contact-item"><img src="/assets/imgs/gmail.png">phil@teachme.vip</li>
+        </ul>
+    </div>
+</ion-content>

@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-navbar color="white">
+    <button ion-button menuToggle="page-menu" color="primary">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="text-align: center;">
+      <ion-label color="primary">{{ 'teacher.teacher_detail' | translate}}</ion-label>
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="openUserMenu()">
+        <img src="../../assets/imgs/me@3x.png" height="18" />
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-row id="headerDiv">
+    <img src="../../assets/imgs/bg@3x.png" class="imgHeader" />
+  </ion-row>
+  <div id="avatarDiv">
+    <img src="{{ teacherDetail.avatar_url }}" style="border-radius:50%; border:5px solid white;">
+  </div>
+  <div id="playButtonDiv" (click)="playVideo()">
+    <img src="../../assets/imgs/icons/play.png" />
+  </div>
+  <ion-row style="text-align:center; margin-top:20px; margin-bottom:20px;">
+    <ion-row style="width:100%;font-size: 12px; font-weight: bold;">
+      <ion-col>{{ teacherDetail.first_name}} {{ teacherDetail.last_name }}</ion-col>
+    </ion-row>
+    <ion-row style="width:100%;font-size: 10px;">
+      <ion-col>
+        <img src="{{ teacherDetail.flag_url }}" style="vertical-align: middle;" />
+        <span style="padding-left: 10px;">Experience over {{ teacherDetail.profile.years_of_teaching_max}} years</span>
+      </ion-col>
+    </ion-row>
+    <ion-row style="width:100%; font-size: 10px; color: #9B9B9B;">
+      <ion-col>{{ teacherDetail.time_zone }} | {{ teacherDetail.education.name_of_institute }} | Education</ion-col>
+    </ion-row>
+    <ion-row style="width:100%;" *ngFor="let strength of strengths">
+      <ion-col>
+        <img *ngIf="strength.strengthIcon" [src]="strength.strengthIcon" style="vertical-align: middle; width:14px; height:14px; margin-right: 5px;"
+        />
+        <span *ngIf="strength.strengthTitle && strength.strengthColor" class="strength-span" [style.background-color]="strength.strengthColor">{{ strength.strengthTitle }}</span>
+        <div class="information-image">!</div>
+      </ion-col>
+    </ion-row>
+  </ion-row>
+  <ion-row style="background-color:#F0F2F5;">
+    <ion-card class="card">
+      <ion-card-header class="header">
+        <div class="header-line"></div>
+        <div class="header-padding">Teaching Classroom Environment</div>
+      </ion-card-header>
+      <div id="main">
+        <div id="background-image"></div>
+        <div id="strength">
+          <ion-list class="inlineText">
+            <ion-item *ngFor="let environment of environments" style="background: transparent !important;">
+              <img *ngIf="environment.icon" [src]="environment.icon" style="width:15px; height:15px; margin-left:5px; vertical-align:middle;"
+              />
+              <span style="margin-left:10px;">{{environment.feature}}</span>
+              <div class="information-image">!</div>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </ion-card>
+    <ion-card class="card">
+      <ion-card-header class="header">
+        <div class="header-line"></div>
+        <div class="header-padding">Teaching Certification</div>
+
+      </ion-card-header>
+      <ion-list class="inlineText">
+        <ion-item>
+          <div class="certificationDiv" *ngFor="let certificate of teacherDetail.teacher_certificates">
+            <img src="../../assets/imgs/v@3x.png" class="vImage" />
+            <label>{{ certificate.title }}</label>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <ion-card class="card">
+      <ion-card-header class="header">
+        <div class="header-line"></div>
+        <div class="header-padding">Teacher Experience</div>
+
+      </ion-card-header>
+      <ion-list *ngFor="let role of teacherDetail.teacher_roles" class="inlineText">
+        <ion-item>
+          <img style="width:15px !important" src="../../assets/imgs/date@3x.png">
+          <label style="margin-left:10px;">{{ role.created_at.slice(0,4) }}.{{ role.created_at.slice(5,7) }}-{{ role.updated_at.slice(0,4) }}.{{ role.updated_at.slice(5,7)
+            }}
+          </label>
+        </ion-item>
+        <ion-item>
+          <img style="width:17px !important" src="../../assets/imgs/experience@3x.png">
+          <label style="margin-left:10px;">English Teacher</label>
+        </ion-item>
+        <ion-item>
+          <img style="width:15px !important" src="../../assets/imgs/location@3x.png">
+          <label style="margin-left:10px;">Primary School</label>
+        </ion-item>
+        <ion-item>
+          <p text-wrap>{{ role.roles_and_responsibilities }}</p>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </ion-row>
+</ion-content>
+<ion-footer style="text-align:center">
+  <ion-row style="width:100%;">
+    <ion-col col-6 style="padding:5px 20px;">
+      <button ion-button id="trial-button" color="light" (click)="trial()">Trial Class</button>
+    </ion-col>
+    <ion-col col-6 style="padding:5px 20px;">
+      <button ion-button block id="payment-button" (click)="payment()">199¥ Payment</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

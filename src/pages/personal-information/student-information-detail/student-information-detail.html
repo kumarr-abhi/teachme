@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle="page-menu" color="primary">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center;">
+            <ion-label color="primary">{{ "student's_information" | translate }}</ion-label>
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="openUserMenu()">
+                <img src="../../../assets/imgs/me@3x.png" height="18" />
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content style="background: #F0F2F5;">
+    <form [formGroup]="studentInformationDetailForm">
+        <ion-list>
+            <ion-item no-padding>
+                <ion-row>
+                    <ion-col ion-item col-6 no-lines>Name</ion-col>
+                    <ion-col ion-item col-6 no-lines>
+                        <ion-input style="color: #9B9B9B;" type="text" formControlName="name" [(ngModel)]="studentDetails.name"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+            <ion-item no-padding>
+                <ion-row>
+                    <ion-col ion-item col-6 no-lines>Gender</ion-col>
+                    <ion-col ion-item col-6 no-lines style="padding-left:8px !important;">
+                        <ion-select style="color: #9B9B9B;" interface="popover" [(ngModel)]="studentDetails.gender" formControlName="gender">
+                            <ion-option value="f">Female</ion-option>
+                            <ion-option value="m">Male</ion-option>
+                        </ion-select>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+            <ion-item no-padding>
+                <ion-row>
+                    <ion-col ion-item col-6 no-lines>Age</ion-col>
+                    <ion-col ion-item col-6 no-lines>
+                        <ion-input style="color: #9B9B9B;" type="number" formControlName="age" [(ngModel)]="studentDetails.age"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-list>
+        <!-- <ion-list>
+                <ion-row ion-item style="font-size:14px !important;">
+                    <ion-col ion-item col-6 style="color: #4A4A4A !important;">Name</ion-col>
+                    <ion-col ion-item col-6 style="color: #9B9B9B; text-align:right;">
+                        <ion-input type="text" formControlName="name" [(ngModel)]="studentDetails.name"></ion-input>
+                    </ion-col>
+                </ion-row>
+            <ion-item>
+                <ion-label>Gender</ion-label>
+                <ion-select interface="popover" formControlName="gender">
+                    <ion-option value="f">Female</ion-option>
+                    <ion-option value="m">Male</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-row style="font-size:14px !important;">
+                <ion-col ion-item col-6 style="color: #4A4A4A !important;">Age</ion-col>
+                <ion-col ion-item col-6 style="color: #9B9B9B; text-align:right;">
+                    <ion-input type="text" formControlName="age" [(ngModel)]="studentDetails.age"></ion-input>
+                </ion-col>
+            </ion-row>
+        </ion-list> -->
+    </form>
+</ion-content>
+<ion-footer style="text-align:center; background: #FFFFFF;">
+    <button ion-button class="save" (click)="save()">{{ 'save' | translate }}</button>
+</ion-footer>

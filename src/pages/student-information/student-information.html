@@ -1,0 +1,100 @@
+<ion-header>
+    <ion-navbar color="white">
+        <button ion-button menuToggle="page-menu" color="primary">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center;">
+            <ion-label color="primary">{{ 'user.student_information.title' | translate}}</ion-label>
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="openUserMenu()">
+                <img src="../../assets/imgs/me@3x.png" height="18" />
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding center text-center>
+    <ion-row *ngIf="childInformationAdded" style="padding: 0px !important;">
+        <ion-col class="child-information">
+            <ion-icon name="information-circle" style="color: rgba(13,124,206,1); height: 13px; width: 13px;"></ion-icon>
+            <span style="padding-left: 20px; font-size: 14px; color: #0D7CCE; text-align: center; vertical-align: middle;">{{ 'user.student_information.child_added_message' | translate }}</span>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col class="child-input">
+            <form [formGroup]="studentForm" (ngSubmit)="done()">
+                <div id="image">
+                    <img src="../../assets/imgs/top@3x.png">
+                </div>
+                <ion-grid>
+                    <div class="border">
+                        <ion-row align-items-center style="padding-top:10px;">
+                            <ion-input type="text" [(ngModel)]="childData.name" formControlName="name" class="name" placeholder="{{ 'user.student_information.child_name_input_placeholder' | translate }}"></ion-input>
+                        </ion-row>
+                        <ion-row *ngIf="nameErrorMessage">
+                            <ion-col>
+                                <ion-label color="danger">{{ nameErrorMessage }}</ion-label>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col col-6>
+                                <img src="./assets/imgs/girl@3x.png" width="64" height="88" />
+                            </ion-col>
+                            <ion-col col-6>
+                                <img src="./assets/imgs/boy@3x.png" width="56" height="91" />
+                            </ion-col>
+                        </ion-row>
+                        <ion-row radio-group formControlName="gender">
+                            <ion-col push-2 col-4 ion-item no-lines>
+                                <ion-label>{{ 'user.student_information.input_labels.girl' | translate}}</ion-label>
+                                <ion-radio name="girl" color="secondary" [value]="gender.female"></ion-radio>
+                            </ion-col>
+                            <ion-col push-4 col-4 ion-item no-lines>
+                                <ion-label>{{ 'user.student_information.input_labels.boy' | translate}}</ion-label>
+                                <ion-radio name="boy" color="secondary" [value]="gender.male"></ion-radio>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-label color="danger" *ngIf="genderErrorMessage">{{ genderErrorMessage }}</ion-label>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col col-6>
+                                <img src="./assets/imgs/4-8@3x.png" width="110" height="71" />
+                            </ion-col>
+                            <ion-col col-6>
+                                <img src="./assets/imgs/8-12@3x.png" width="110" height="70" />
+                            </ion-col>
+                        </ion-row>
+                        <ion-row radio-group formControlName="age">
+                            <ion-col col-6 ion-item no-lines>
+                                <ion-label>{{ 'user.student_information.input_labels.4-8_years_old' | translate}}</ion-label>
+                                <ion-radio name="checkbox" color="secondary" [value]="age.categoryOne"></ion-radio>
+                            </ion-col>
+                            <ion-col col-6 ion-item no-lines>
+                                <ion-label>{{ 'user.student_information.input_labels.9-14_years_old' | translate}}</ion-label>
+                                <ion-radio name="checkbox" color="secondary" [value]="age.categoryTwo"></ion-radio>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-label color="danger" *ngIf="ageErrorMessage">{{ ageErrorMessage }}</ion-label>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                    <ion-row style="padding-top:50px; color: #06B9FC;">
+                        <ion-col col-6>
+                            <button ion-button primary block>{{ 'user.student_information.buttons.done' | translate}}</button>
+                        </ion-col>
+                        <ion-col col-6>
+                            <button [disabled]="addDisabled" ion-button color="dark" block outline type="button" (click)="add()">{{ 'user.student_information.buttons.add' | translate}}</button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </form>
+        </ion-col>
+    </ion-row>
+</ion-content>

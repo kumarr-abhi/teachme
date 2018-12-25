@@ -1,0 +1,49 @@
+page-pay-lesson {
+    #message{
+        height: 38px;
+        background-color: #E4F3FF;
+        text-align: center;
+        justify-content: center;
+    }
+    #payment-amount{
+        padding-left: 16px;
+        background-color: #FFFFFF;
+    }
+    #amount{
+        padding: 0 0 10px 20px;
+    }
+    .image{
+        width:30px;
+        height:24px;
+    }
+    .card{
+        width:100%; 
+        margin-left:0px;
+        padding: 16px;
+        border-bottom: 1px solid lightgray;
+        background-color: #FFFFFF;
+    }
+    .header-line{
+        width: 4px; 
+        border: 2px solid #27c4ff;
+    }
+    .header-padding{
+        padding-left:10px;
+    }
+    .header > div{
+        display: inline;;
+    }
+    .student{
+        height: 44px;
+        line-height: 44px;
+        padding-left: 16px;
+    }
+    .list-ios {
+        margin: 0 !important;
+    }
+    .pay-button{
+        width:75%;
+        margin:10px;
+        padding:25px;
+    }
+}

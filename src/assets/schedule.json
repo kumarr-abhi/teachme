@@ -1,0 +1,84 @@
+{
+  "children": [
+      {
+          "id": 1,
+          "name": "First Kiddo",
+          "schedule": [
+              {
+                  "teacher": {
+                      "id": 2,
+                      "first_name": "Chloe",
+                      "last_name": "Anderson",
+                      "avatar_url": "https:\/\/d3odsbzvkgnl3u.cloudfront.net\/lavi.jpg",
+                      "video_url": "https:\/\/d3odsbzvkgnl3u.cloudfront.net\/lavi.mp4"
+                  },
+                  "classes": [
+                      {
+                          "start": "2018-05-02 12:30:00",
+                          "end": "2018-05-02 14:00:00",
+                          "type": "paid"
+                      },
+                      {
+                          "start": "2018-05-02 14:00:00",
+                          "end": "2018-05-02 16:00:00",
+                          "type": "paid"
+                      },
+                      {
+                          "start": "2018-05-09 12:30:00",
+                          "end": "2018-05-09 14:00:00",
+                          "type": "paid"
+                      }
+                  ]
+              },
+              {
+                  "teacher": {
+                      "id": 1,
+                      "first_name": "Rickie",
+                      "last_name": "King",
+                      "avatar_url": "https:\/\/d3odsbzvkgnl3u.cloudfront.net\/eg.jpg",
+                      "video_url": "https:\/\/d3odsbzvkgnl3u.cloudfront.net\/eg.mp4"
+                  },
+                  "classes": [
+                      {
+                          "start": "2018-04-02 12:30:00",
+                          "end": "2018-04-02 14:00:00",
+                          "type": "paid"
+                      },
+                      {
+                          "start": "2018-04-09 14:30:00",
+                          "end": "2018-04-09 16:00:00",
+                          "type": "paid"
+                      },
+                      {
+                          "start": "2018-04-04 12:30:00",
+                          "end": "2018-04-04 14:00:00",
+                          "type": "paid"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "id": 2,
+          "name": "Kid name no.2 ",
+          "schedule": [
+              {
+                  "teacher": {
+                      "id": 1,
+                      "first_name": "Rickie",
+                      "last_name": "King",
+                      "avatar_url": "https:\/\/d3odsbzvkgnl3u.cloudfront.net\/eg.jpg",
+                      "video_url": "https:\/\/d3odsbzvkgnl3u.cloudfront.net\/eg.mp4"
+                  },
+                  "classes": [
+                      {
+                          "start": "2018-04-03 12:30:00",
+                          "end": "2018-04-03 14:00:00",
+                          "type": "paid"
+                      }
+                  ]
+              }
+          ]
+      }
+  ]
+}

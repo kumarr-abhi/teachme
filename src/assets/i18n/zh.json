@@ -1,0 +1,177 @@
+{
+    "find teachers": "找老師",
+    "schedule": "查看行事曆",
+    "login": "登入",
+    "about": "關於",
+    "home": "首頁",
+    "pages": "導覽",
+    "teacher_log_in": "教師登入",
+    "landing": {
+        "hero": {
+            "title": "為您的孩子找尋最適合的英語教師",
+            "subtitle": "Find the Perfect Teacher for Your Childs Learning Needs",
+            "call_to_action_button_title" : "立即試聽"
+        },
+        "strength.title" : "TeachMe 的優勢",
+
+        "teacher.title" : "TeachMe 最佳老師",
+
+        "strength.payment" : "多元付款方式",
+        "strength.payment.description" : "Flexible Payment Options",
+        "strength.payment.full_description" : "我們提供彈性的課程選項以及訂閱方案來因應您的需求。除此之外也可以選擇最適合您的付款方式，可支援微信、支付寶、visa、萬事達以及paypal等多元選項。",
+
+        "strength.no_contract" : "不綁合約",
+        "strength.no_contract.description" : "No Contracts",
+        "strength.no_contract.full_description" : "無需承擔高額長期的課程契約，在家獲得最高品質的英文教育！！",
+
+        "strength.natural_learning" : "自然學習法",
+        "strength.natural_learning.description" : "Natural Learning",
+        "strength.natural_learning.full_description" : "我們提倡知名美國語言學家研發的「自然學習法」，除了無壓力的環境之外，快樂地學習更能激發孩子的語言潛力。",
+
+        "strength.set_teachers" : "單一固定教師",
+        "strength.set_teachers.description" : "Set Teachers",
+        "strength.set_teachers.full_description" : "單一固定教師可以緊密追蹤孩子的學習近況，找出最有效率及適合的方法協助成長。除了孩子喜歡，家長也放心！",
+
+        "strength.one_on_one" : "一對一教學",
+        "strength.one_on_one.description" : "1 on 1",
+        "strength.one_on_one.full_description" : "所有的課程全程採用一對一教學，根據研究指出，客製化的教育系統更能幫助學生迅速達成學習成果。",
+
+        "strength.progressive_curriculum" : "漸進式教學",
+        "strength.progressive_curriculum.description" : "A Progressive Curriculum",
+        "strength.progressive_curriculum.full_description" : "豐富教學資源的教師團隊可為學生設計最有效率的學習課程。透過課後學習報告可使家長了解孩子的學習動態。",
+
+        "strength.student_focused" : "100% 滿意度保證",
+        "strength.student_focused.description" : "100% Satisfaction Guaranteed",
+        "strength.student_focused.full_description" : "如果您不滿意我們的教學品質或是服務專業，我們將無條件退還款項!",
+
+        "strength.percent_of_profits" : "最精英的教師團隊",
+        "strength.percent_of_profits.description" : "The Best Teachers",
+        "strength.percent_of_profits.full_description" : "我們擁有嚴格的教師篩選。只有低於6%的菁英教師能加入我們並用他們豐富的經驗和熱忱給予孩子最完善的教育環境。",
+
+        "customization.title" : "客製化的教學滿足孩子的所有學習需求",
+        "customization.subtitle" : "Personalised Instruction To Suit your Child’s Unique Learning Needs",
+
+        "philosophy.title" : "TeachMe SUN 教育哲學",
+        "philosophy.description" : "TeachMe獨創「S.U.N教育哲學」，為孩子提供最舒適、高品質的英語教育環境。",
+        "philosophy_1_title" : "<span class='philosophy-highlight'>S</span>tudent Focused",
+        "philosophy_1_1" : "提供「教師瀏覽平台」，鼓勵家長親自為孩子選擇最適合的教師。",
+        "philosophy_1_2" : "根據不同學齡層的孩子配對適合任教的英語教師。",
+        "philosophy_2_title" : "<span class='philosophy-highlight'>U</span>nique Teachers",
+        "philosophy_2_1" : "來自英美澳不同英語區之專業教師，並提供教師專業進修。",
+        "philosophy_2_2" : "針對教師的不同國籍、專業興趣及教學經歷進行分類。",
+        "philosophy_3_title" : "<span class='philosophy-highlight'>N</span>atural Learning",
+        "philosophy_3_1" : "課堂中語言難易度適當，教師關心學生，注重學習環境。",
+        "philosophy_3_2" : "運用生動活潑的肢體語言及視頻教材，讓孩子容易理解。",
+
+        "affordable.title" : "物超所值的價格，卓越超群的教學 ",
+        "affordable.subtitle" : "The Best Quality Teaching for a Fair Price",
+
+        "student_say.title" : "TeachMe 學生說",
+
+        "about_our_service.title" : "關於我們的服務",
+        "we_believe" : "我們深信",
+        "we_promise" : "我們承諾",
+        "the_strive" : "建立孩子與教師之間深遠的教學情感，讓孩子成為『自主學習者』",
+        "our_service_chat_bubble" : "“来TeachMe上课真是不错，来TeachMe上课真是不错 来TeachMe上课真是不错”",
+        "the_believe" : "高品質的教學方式以及真心關懷每一個學生的老師即是孩子成功學習的關鍵。",
+        "the_promise" : "將部分的公司營收投注於免費線上英語教育課程，透過一對一的線上教學方式來協助、關懷台灣的弱勢兒童以縮減現今教育資源不均的社會問題。",
+
+        "exp" : "經驗",
+        "year" : "年",
+
+        "nemo_parent" : "TeachMe的老師總是非常友善和親切地對待學生們。課程中的學習氛圍非常活潑。我的兒子每週都非常期待上課。課後的學習報告讓我可以隨時知道兒子目前學習的進展及狀態。",
+        "jessie_parent" : "我的女兒超愛來TeachMe上課！雖然這不是她第一次接觸英文，但這是她有史以來第一次對這個科目感到有興趣且樂意學習。她對自己的進步也感到非常的自信及積極，甚至現在她還會主動告訴我「該上課囉！」我喜歡我的女兒快樂地在這個機構學習英文，因為我看到她的學習是無可限量的！",
+        "lisa_parent" : "線上英語課完全解決了現在學生時間壓力的問題，即便是外出上課的路程中，只要有一台連上網的iPad就可以馬上有效學習英文，真的方便又有效率！加入TeachMe後，Lisa的單字量有了很明顯的增加，聽說能力也變得更自如，從一開始地不敢開口到現在樂意與外師交流分享，作為家長真的感到欣慰！孩子常常在課程結束的時後表示意猶未盡，每回都期待下一次與老師的交談。希望TeachMe愈來愈好，也能讓更多孩子克服對英文的恐懼，快樂地在這個領域中有所收穫。",
+        "classroom": {
+            "title": "Teachme 教室環境"
+        },
+        "us": {
+            "title": "聯繫我們",
+            "name_field": "姓名",
+            "company_field": "公司",
+            "email_field": "郵箱",
+            "contact_method_field": "聯絡方式",
+            "message_field": "您的留言",
+            "submit": "發送",
+            "or_contact_us_directly": "或者直接聯絡我們",
+            "contact_address": "臺北市中正區中山北路1段2號11樓之11"
+        },
+        "teacher_strength": {
+            "title": "Teaching Strengths to suit every learning goal",
+            "phonetic": {
+                "title":  "語音學",
+                "summary": "老師擅長運用發音及音節來幫助了解每個單字的正確發音。"
+            },
+            "pronunciation": {
+                "title":  "發音",
+                "summary": "老師擁有清晰完整的道地口音來糾正學生的口音並練習正確的發音以及語法。"
+            },
+            "tpr": {
+                "title":  "肢體語言",
+                "summary": "老師在課堂中擅長運用肢體表達來幫助學生了解課堂教學內容。"
+            },
+            "behavior_management": {
+                "title":  "行為管理",
+                "summary": "老師擅長運用多樣的教材及方法來幫助集中學生在課堂中的注意力。"
+            },
+            "early_childhood": {
+                "title":  "幼兒教育",
+                "summary": "老師擅長於七歲以下的幼兒教學。"
+            },
+            "writing": {
+                "title":  "寫作",
+                "summary": "老師擅長教學英文寫作技巧、文法、句型結構以及文章架構等練習。"
+            },
+            "english_test_prep": {
+                "title":  "考試準備",
+                "summary": "老師擅長教學雅思、托福、多益及全民英檢等英語考試準備方法。"
+            },
+            "grammar_training": {
+                "title":  "文法",
+                "summary": "老師熟悉正確的英文文法使用規則及原則。"
+            },
+            "conversation_training": {
+                "title":  "對話訓練",
+                "summary": "老師擅長口語表達訓練，包含日常口語表達以及高階商務英語對話等練習。"
+            },
+            "personalized_lesson": {
+                "title":  "個人化課程",
+                "summary": "老師會根據學生的個別學習需求來規劃客制的學習計畫。"
+            }
+        },
+        "registration_info": "教我有限公司(TeachMe)於 2018年3月6號在台灣(ROC)設立登記 | TeachMe專精於教育科技發展並提供專業服務 | TeachMe 統一編號：42994640"
+    },
+    "teacher": {
+        "strength_phonetic":  "語音學",
+        "strength_pronunciation":  "發音",
+        "strength_tpr":  "肢體語言",
+        "strength_behavior_management":  "行為管理",
+        "strength_early_childhood":  "幼兒教育",
+        "strength_writing":  "寫作",
+        "strength_english_test_prep":  "考試準備",
+        "strength_grammar_training":  "文法",
+        "strength_conversation_training":  "對話訓練",
+        "strength_personalized_lesson":  "個人化課程"
+    },
+    "classroom": {
+        "manipulatives": "Manipulatives",
+        "manipulatives_text": "Puppets/soft toys, white board, flashcards, or any other pysical object that assists with instruction or bring energy and life to your classroom experience",
+        "reward_system": "Reward System",
+        "reward_system_text": "Any set visual system that encourages students to perform during class",
+        "educational_environment": "Educational Environment",
+        "educational_environment_text": "A classroom environment that includes educational themes such as books, maps, alphabets charts, or other educational posters, objects that can be seen in the background when students join your meeting",
+        "class_notes": "Class Note",
+        "class_notes_text": "Class notes sent to students after class",
+        "community_interaction": "Community Interaction",
+        "community_interaction_text": "Encouragement and engagement in the Teachme WeChat community (click link for example) ",
+        "set_curriculum": "Set Curriculum",
+        "set_curriculum_text": "A set curriculum to suit the needs of your students, there are set curriculums available for free and for purchase from the following links "
+    },
+    "contact": {
+        "success": "Thanks for your requests! We will contact you soon."
+    },
+    "about_us": {
+        "title": "关于我们",
+        "text": "TeachMe 教我有限公司成立于 2018年3月6号。我们专精于教育科技发展并提供专业服务。我们致力于在网上提供给中国及台湾的孩子最好的英文教育服务，并且通过盈利收入，帮助弱势儿童及孤儿，为他们提供免费的英文教育服务。"
+    }
+}

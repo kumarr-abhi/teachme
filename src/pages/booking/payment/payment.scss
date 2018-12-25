@@ -1,0 +1,48 @@
+page-payment{
+    #header{
+        text-align:right;
+        background-color: #F7F7F7;
+        opacity:0.9;
+    }
+    .close-button{
+        color:#9B9B9B;
+        -webkit-box-shadow: none;
+    }
+    #content{
+        background-color: #F7F7F7;
+        opacity: 0.9;
+    }
+    #messageDiv{
+        text-align: center;
+        padding-top: 50px;
+    }
+    .packageDiv{
+        width: 230px;
+        height: 84px;
+        margin-top: 20px;
+        text-align: start;
+        background-color: #FFFFFF;
+        color: #06B9FC;
+        display: inline-block;
+        border-radius: 5px;
+        border:1px solid #06B9FC;
+        position: relative;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .active{
+        background-color: #06B9FC;
+        color: #FFFFFF;
+    }
+    .col{
+        padding: 0px !important;
+    }
+    .first-h1{
+        padding:8px;
+        font-size:29px !important;
+        line-height: 0;
+    }
+    .second-h1{
+        padding:8px; font-size:16px !important; line-height: 0;
+    }
+}

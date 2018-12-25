@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar color="white">
+        <button ion-button menuToggle="page-menu" color="primary">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title style="text-align: center;">
+            <ion-label color="primary">{{ 'feedback' | translate }}</ion-label>
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="openUserMenu()">
+                <img src="../../../assets/imgs/me@3x.png" height="18" />
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list class="text-area">
+        <ion-textarea placeholder="Write your question..." [(ngModel)]="feedback">
+        </ion-textarea>
+    </ion-list>
+    <button [disabled]="!feedback" ion-button block style="text-align:center; border-color: #9B9B9B; color:#9B9B9B;" outline
+        (click)="submit()">Submit</button>
+</ion-content>

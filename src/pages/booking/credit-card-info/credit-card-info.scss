@@ -1,0 +1,32 @@
+page-credit-card-info{
+    #message{
+        height: 38px;
+        background-color: #E4F3FF;
+        text-align: center;
+        justify-content: center;
+    }
+    .pay-button{
+        width:80%;
+        margin:10px;
+        padding:25px;
+    }
+    .label{
+        font-size: 18px;
+        font-weight: 500;
+        color: #06B9FC;
+    }
+    .text-input-md{
+        margin:0px !important
+    }
+    .item-md{
+        padding:0px 25px;
+    }
+    .input{
+        border-bottom: 1px solid #06B9FC;
+        padding-bottom: 10px;
+    }
+    .error-message{
+        color: red;
+        font-size: 14px;
+    }
+}
